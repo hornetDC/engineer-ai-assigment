@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assignment</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <section id="block1" class="block">
+      <h1>Section 1</h1>
+      <p>
+        Mollit voluptate aliqua ad aliquip ut excepteur proident ex culpa fugiat quis. Cillum veniam
+        dolor ea incididunt voluptate. Enim laborum sit tempor ipsum labore ipsum tempor ex
+        proident. Nostrud sunt adipisicing ipsum velit. Sunt officia consectetur non amet nostrud.
+        Ea magna adipisicing ea consectetur culpa amet cupidatat duis sit culpa Lorem anim.
+      </p>
+    </section>
+    <section id="block2" class="block hidden-bottom">
+      <h1>Section 2</h1>
+      <p>
+        Esse ut consectetur amet ex ex consectetur. Consequat et magna aliqua nisi excepteur.
+        Cupidatat sunt enim sunt magna elit nulla dolore sunt dolor veniam Lorem et voluptate. Eu
+        cillum sit laborum adipisicing laboris tempor esse consequat fugiat. Velit occaecat laborum
+        adipisicing esse eiusmod. Laboris ex ea ut cillum ex eiusmod. Veniam dolor exercitation
+        consectetur aute sint ex labore.
+      </p>
+    </section>
+    <section id="block3" class="block hidden-bottom">
+      <h1>Section 3</h1>
+      <p>
+        Ex sint fugiat anim officia aliquip elit. Eiusmod voluptate laboris sit fugiat quis. Velit
+        deserunt magna anim sit nostrud adipisicing non. Pariatur aliquip non reprehenderit quis.
+        Magna nisi occaecat in Lorem.
+      </p>
+    </section>
+  </body>
+
+  <script>
+    let position = 0;
+
+    function setVisibilityClass(position) {
+      const nodeList = document.querySelectorAll("section");
+
+      nodeList.forEach((node, index) => {
+        if (index === position) {
+          node.className = "block";
+        } else if (index < position) {
+          node.className = "block hidden-top";
+        } else if (index > position) {
+          node.className = "block hidden-bottom";
+        }
+      });
+    }
+
+    function handleMouseScroll(e) {
+      if (e.deltaY < 0 && position > 0) {
+        position -= 1;
+        setVisibilityClass(position);
+      } else if (e.deltaY > 0 && position < 2) {
+        position += 1;
+        setVisibilityClass(position);
+      }
+    }
+
+    window.addEventListener("wheel", handleMouseScroll);
+  </script>
+</html>
